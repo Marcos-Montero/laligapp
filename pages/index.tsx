@@ -1,6 +1,15 @@
+import { useContext } from 'react'
+
 import Head from 'next/head'
 
 import styled from '@emotion/styled'
+
+import {
+  Content,
+  ModalPlayers,
+  Nav,
+} from '../components'
+import { AppContext } from './_app'
 
 const Main = styled.main`
   display: flex;
@@ -10,6 +19,7 @@ const Main = styled.main`
 `
 
 const Home = () => {
+  const { modal } = useContext(AppContext)
   return (
     <div >
       <Head>
@@ -18,12 +28,9 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Main >
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-      </Main>
+      {modal && <ModalPlayers />}
+      <Nav />
+      <Content />
 
     </div>
   )
