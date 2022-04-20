@@ -4,7 +4,8 @@ import { useCycle } from 'framer-motion'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../../pages/_app'
+import { AppContext } from '../../../Context/AppContext'
+import { ICommonProps } from '../../types'
 import { Button } from '../../ui'
 
 const Top = styled.div`
@@ -131,7 +132,7 @@ const CInfo = styled.div`
         width:66%;
     }
 `
-const MoreButton = styled.button`
+const MoreButton: any = styled.button`
     padding: 10px;
     text-align: center;
     border-radius: 100%;
@@ -220,9 +221,9 @@ const CLabel = styled.div`
     width: 50%;
     text-align: right;
 `
-const CData = styled.div`
-    width: ${props => props.state ? '50%' : '100%'};
-    text-align: ${props => props.state ? 'left' : 'center'};
+const CData: any = styled.div`
+    width: ${(props: ICommonProps) => props.state ? '50%' : '100%'};
+    text-align: ${(props: ICommonProps) => props.state ? 'left' : 'center'};
 
 `
 const DataStyled = ({ label = "", children }) => {

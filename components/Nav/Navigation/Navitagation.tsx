@@ -1,11 +1,11 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import { motion } from 'framer-motion'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
-import { MenuItem } from './MenuItem'
+import { AppContext } from '../../../Context/AppContext'
+import { MenuItem } from '../MenuItem'
 
 const List = styled(motion.ul)`
     padding: 25px;
@@ -23,7 +23,7 @@ export const Navigation = () => {
       transition: { staggerChildren: 0.05, staggerDirection: -1 }
     }
   };
-  const { teamList } = React.useContext(AppContext)
+  const { teamList } = useContext(AppContext)
   return (
     <List variants={variants}>
       {teamList.map((v, i) => (

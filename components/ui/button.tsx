@@ -3,6 +3,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Btn = styled.button`
+    position: relative;
     height: 60px;
     font-size: 16px;
     display: flex;
@@ -22,7 +23,7 @@ const Btn = styled.button`
     border-top: none;
     backdrop-filter: blur(5px);
     opacity:.8;
-    background-image: ${`url('${process.env.PUBLIC_URL}/assets/btnbg.svg')`};
+    background: orangered;
     :hover {
         cursor: pointer;
         background: #ee4411;
@@ -32,7 +33,6 @@ const Btn = styled.button`
         background: #aa2201;
         transform: scale(0.98);
     }
-
 `
 
 export const Button = ({ onClick, children }) => {

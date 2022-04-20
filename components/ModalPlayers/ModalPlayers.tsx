@@ -8,7 +8,8 @@ import { useCycle } from 'framer-motion'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
+import { AppContext } from '../../Context/AppContext'
+import { ICommonProps } from '../types'
 import { PlayerCard } from './PlayerCard'
 
 const ModalBg = styled.div`
@@ -39,7 +40,7 @@ const ModalBg = styled.div`
         display: none;
     }
     `
-const SeeAllButton = styled.button`
+const SeeAllButton: any = styled.button`
     padding: 2em;
     height: 80px;
     background: orangered;
@@ -50,7 +51,7 @@ const SeeAllButton = styled.button`
     border: none;
     border-radius: 20px;
     z-index: 200;
-    display: ${props => props.state ? 'block' : 'none'};
+    display: ${(props: ICommonProps) => props.state ? 'block' : 'none'};
     transition: .3s;
     :hover {
         cursor: pointer;
@@ -58,8 +59,8 @@ const SeeAllButton = styled.button`
         
     }
 `
-const CloseButton = styled(SeeAllButton)`
-    opacity: ${props => props.state ? 1 : 0};
+const CloseButton: any = styled(SeeAllButton)`
+    opacity: ${(props: ICommonProps) => props.state ? 1 : 0};
 `
 const Container = styled.div`
 margin-top: 3em;

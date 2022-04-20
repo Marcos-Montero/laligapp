@@ -11,17 +11,21 @@ import {
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
+import { AppContext } from '../../Context/AppContext'
 import {
   MenuToggle,
   Navigation,
 } from './'
 
-const Container = styled(motion.nav)`
+type Iprops = {
+  state: boolean
+}
+
+const Container: any = styled(motion.nav)`
   position: fixed;
   top: 0;
   left: 0;
-  width: ${props => props.state ? '300px' : '0px'};
+  width: ${(props: Iprops) => props.state ? '300px' : '0px'};
   background: rgba(0,0,0,.1);
   transition: 1s;
   z-index: 4;
@@ -54,7 +58,6 @@ const Bar = styled.nav`
   width:100vw;
   height: 55px;
   background: white;
-  border-bottom: 3px solid orangered;
 `
 const CLogo = styled.div`
   width: 100px;
@@ -74,8 +77,8 @@ const LinkLogo = styled.a`
 `
 export const Nav = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = useRef(null);
   const { navOpen, toggleNavOpen } = useContext(AppContext)
+  const containerRef = useRef(null);
   const handleOpen = () => {
     toggleOpen()
     toggleNavOpen()
@@ -102,8 +105,6 @@ export const Nav = () => {
       <MenuBox>
         <Navigation />
       </MenuBox>
-
-
       <MenuToggle toggle={handleOpen} />
     </Container>
   )

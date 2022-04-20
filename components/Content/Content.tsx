@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
+import { AppContext } from '../../Context/AppContext'
 import {
   DefaultPage,
   TeamDisplay,

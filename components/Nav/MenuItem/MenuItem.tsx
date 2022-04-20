@@ -4,9 +4,10 @@ import { motion } from 'framer-motion'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
-import { searchTeam } from '../../pages/api'
-import { parseColors } from '../../utils'
+import { AppContext } from '../../../Context/AppContext'
+import { searchTeam } from '../../../pages/api'
+import { parseColors } from '../../../utils'
+import { ICommonProps } from '../../types'
 
 const variants = {
   open: {
@@ -40,7 +41,7 @@ const Texto = styled.p`
   width: 100%;
   height: 20px;
 `
-const ItemContainer = styled(motion.li)`
+const ItemContainer: any = styled(motion.li)`
   list-style: none;
   z-index: 1;
   margin-bottom: 20px;
@@ -63,17 +64,24 @@ const ItemContainer = styled(motion.li)`
     height: 50px;
     width: 20px;
     box-shadow: 0 0 7px;
-    background: ${props => props.colors};
+    background: ${(props: ICommonProps) => props.colors};
     transform: rotate(45deg);
     z-index: 40;
   }
 `
-
-export const MenuItem = ({ team }) => {
+interface IMenuiItem {
+  team: {
+    id: number
+    crestUrl: string
+    shortName: string
+    clubColors: string
+  }
+}
+export const MenuItem: React.FC<IMenuiItem> = ({ team }) => {
   const { setTeam, toggleNavOpen, toggleLoading } = React.useContext(AppContext)
-  const selectTeam = async () => {
+  const selectTeam = async (id) => {
     toggleLoading()
-    const result = await searchTeam(team.id)
+    const result = await searchTeam(id)
     setTeam(result)
     toggleNavOpen()
     setTimeout(() => {

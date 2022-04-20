@@ -8,8 +8,9 @@ import { motion } from 'framer-motion'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../pages/_app'
+import { AppContext } from '../../Context/AppContext'
 import { parseColorsCards } from '../../utils'
+import { ICommonProps } from '../types'
 import {
   attacker,
   defender,
@@ -17,7 +18,7 @@ import {
   midFielder,
 } from './Designs'
 
-const Card = styled(motion.div)`
+const Card: any = styled(motion.div)`
     position: relative;
     height: 211px;
     width: 152px;
@@ -25,7 +26,7 @@ const Card = styled(motion.div)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: ${props => props.colors};
+    background: ${(props: ICommonProps) => props.colors};
     border: 1px solid;
     border-radius: 12px;
     box-shadow: 0 0 10px;
@@ -59,10 +60,10 @@ const CInfo = styled.div`
         }
     }
 `
-const Escudo = styled.img`
-    width: ${props => props.exception ? '30px' : '40px'};
+const Escudo: any = styled.img`
+    width: ${(props: ICommonProps) => props.exception ? '30px' : '40px'};
     position: absolute;
-    left: ${props => props.exception ? '-12px' : '-15px'};
+    left: ${(props: ICommonProps) => props.exception ? '-12px' : '-15px'};
     top: -10px;
     z-index: 10;
 `
@@ -125,7 +126,12 @@ export const PlayerCard = ({ player, team }) => {
     const { clubColors, crestUrl } = team
     const [illustration, setIllustration] = useState(null)
     const bgColors = parseColorsCards(clubColors)
-    const getAge = dateString => Math.floor((new Date() - new Date(dateString)) / 31557600000)
+    const getAge = (dateString: string): any => {
+        const newLocal: any = new Date()
+        const ageLocal: any = new Date(dateString)
+        return Math.floor(((newLocal - ageLocal) / 31557600000))
+    }
+
     const { addToMyTeam, deleteFromMyTeam } = useContext(AppContext)
     useEffect(() => {
         switch (position) {
@@ -165,7 +171,7 @@ export const PlayerCard = ({ player, team }) => {
             </CIllustration>
             <CInfo>
                 <p><span>{name}</span></p>
-                <p>{getAge(dateOfBirth)}</p>
+                <p>{getAge(dateOfBirth)} años</p>
                 <p>{nationality}</p>
             </CInfo>
         </Card>

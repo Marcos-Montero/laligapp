@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
-import { AppContext } from '../../../pages/_app'
+import { AppContext } from '../../../Context/AppContext'
 import { searchTeam } from '../../../pages/api'
 
 const CTeam = styled.a`
