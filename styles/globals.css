@@ -1,10 +1,17 @@
-html,
+
 body {
+  width: 100vw;
+  min-width: 360px;
+  background: linear-gradient(#979797, rgb(44, 44, 44));
+  overflow: scroll;
   padding: 0;
   margin: 0;
-  font-family: Arial;
+  display: flex;
+  justify-content: center;
 }
-
-* {
-  box-sizing: border-box;
+html::-webkit-scrollbar {
+  display: none;
+  }
+*{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

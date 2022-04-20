@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/ModalPlayers/Designs.js", "1.js"  ],
   "exclude": [
     "node_modules"
   ]
